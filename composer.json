@@ -1,0 +1,20 @@
+{
+    "name": "kphoen/silex-rulerz-provider",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/K-Phoen/silex-rulerz-provider",
+    "description": "Silex RulerZ Service Provider",
+    "keywords": ["silex", "provider", "specification", "doctrine", "ruler", "rulerz"],
+    "authors": [
+        {
+            "name": "Kévin Gomez",
+            "email": "contact@kevingomez.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Silex\\Provider\\RulerZ\\": "src" }
+    },
+    "require": {
+        "kphoen/rulerz-bridge": "*"
+    }
+}
