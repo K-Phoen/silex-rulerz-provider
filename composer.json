@@ -15,6 +15,7 @@
         "psr-4": { "Silex\\Provider\\RulerZ\\": "src" }
     },
     "require": {
-        "kphoen/rulerz-bridge": "*"
+        "silex/silex": "^2.0",
+        "kphoen/rulerz": "^0.19.3"
     }
 }

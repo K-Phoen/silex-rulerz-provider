@@ -2,8 +2,8 @@
 
 namespace Silex\Provider\RulerZ;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 use RulerZ\Compiler\FileCompiler;
 use RulerZ\Compiler\Target;
@@ -11,26 +11,28 @@ use RulerZ\Parser\HoaParser;
 
 class RulerZServiceProvider implements ServiceProviderInterface
 {
-    public function register(Application $app)
+    public function register(Container $app)
     {
-        $app['rulerz.compiler'] = $app->share(function() use ($app) {
+        $app['rulerz.evaluator'] = function () use ($app) {
             $cacheDir = isset($app['rulerz.cache_dir']) ? $app['rulerz.cache_dir'] : null;
 
-            return new FileCompiler(new HoaParser(), $cacheDir);
-        });
+            return new \RulerZ\Compiler\FileEvaluator($cacheDir);
+        };
 
-        $app['rulerz.compilation_targets'] = $app->share(function() {
+        $app['rulerz.compiler'] = function () use ($app) {
+            return new \RulerZ\Compiler\Compiler($app['rulerz.evaluator']);
+        };
+
+        $app['rulerz.compilation_targets'] = function() {
             return [
-                new Target\ArrayVisitor(),
+                 new \RulerZ\Target\Native\Native([
+                    'length' => 'strlen',
+                ]),
             ];
-        });
+        };
 
-        $app['rulerz'] = $app->share(function($app) {
+        $app['rulerz'] = function () use ($app) {
             return new \RulerZ\RulerZ($app['rulerz.compiler'], $app['rulerz.compilation_targets']);
-        });
-    }
-
-    public function boot(Application $app)
-    {
+        };
     }
 }
