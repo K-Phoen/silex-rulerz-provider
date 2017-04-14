@@ -5,10 +5,6 @@ namespace Silex\Provider\RulerZ;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
-use RulerZ\Compiler\FileCompiler;
-use RulerZ\Compiler\Target;
-use RulerZ\Parser\HoaParser;
-
 class RulerZServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
