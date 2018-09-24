@@ -3,4 +3,8 @@ VERSION 1  INITIAL RELEASE
 ==========================
 
    Version 1.0 - Initial release
+      24/09/2018 12:41  1.0.1  Fix version constraint on rulerz
+         ee934dc Update version constraint on rulerz
+         5aef571 Add gitignore
+         4f8a7a0 Remove useless use statements
       29/03/2017 20:53  1.0.0  initial release
