@@ -16,6 +16,6 @@
     },
     "require": {
         "silex/silex": "^2.0",
-        "kphoen/rulerz": "^0.19.3"
+        "kphoen/rulerz": "~0.19,>=0.19.3"
     }
 }
